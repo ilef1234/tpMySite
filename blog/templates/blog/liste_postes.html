@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Liste des Postes</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -70,6 +72,14 @@
      <li class="post-container">
        <h2 class="post-title"><a href="{% url 'detail_post' post.pk %}" class="post-link">{{ post.title }}</a></h2>
        <p>{{ post.content }}</p>
+       {% if post.image %}
+       <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+   {% endif %}
+   <p>Author: {{ post.author }}</p>
+   <p>Created on: {{ post.created_on|date:"Y-m-d H:i" }}</p>
+   <a href="{% url 'detail_post' post.pk %}" class="btn btn-primary">Details</a>
+   <a href="{% url 'modifier_post' post.pk  %}" class="btn btn-warning">Update</a>
+   <a href="{% url 'supprimer_post' post.pk %}" class="btn btn-danger">Delete</a>
      </li>
      {% endfor %}
    </ul>

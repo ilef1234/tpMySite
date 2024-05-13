@@ -89,7 +89,18 @@ class CategoryAPIView(APIView):
     categories = Categorie.objects.all()
     serializer = CategorySerializer(categories, many=True)
     return Response(serializer.data)
- 
+  
+
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        queryset = Categorie.objects.all()
+        category_id = self.request.user.id
+        if category_id:
+            queryset = queryset.filter(id=category_id)
+        return queryset
+
 class ProduitAPIView(APIView):
  def get(self, *args, **kwargs):
     produits = Produit.objects.all()
