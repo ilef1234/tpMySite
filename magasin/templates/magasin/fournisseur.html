@@ -1,0 +1,44 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+
+<div class="col-md-12 text-center">
+  <h2 style="font-family: 'Arial', sans-serif; font-weight: bold; color: rgb(186, 42, 225); font-style: italic;">Manip fournisseur</h2>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <form method='POST' class="post-form" style="max-width: 400px; margin: 0 auto;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-3">
+              <button type="submit" class="btn btn-primary" style="background-color: #b635c2;">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row">
+    {% for fournisseur in fournisseurs %}
+    <div class="col-md-4 mb-4">
+      <div id="{{ fournisseur.id }}" class="card border-primary" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #333; font-size: 18px;">{{ fournisseur.nom }}</h5>
+          <p><b>{{ fournisseur.adresse }}</b></p>
+          <p style="color: #666;">{{ fournisseur.email }}</p>
+          <p style="color: #666;">{{ fournisseur.telephone }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

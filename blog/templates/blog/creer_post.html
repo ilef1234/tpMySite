@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Créer la poste</title>
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ddd6f0;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #a272b5;
+  }
+  .form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  .form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  .form input[type="text"],
+  .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  .form button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px; /* Taille du bouton ajustée */
+    background-color: #a26ea7;
+    color: #fff;
+    border: 2px solid #a26ea7;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .form button[type="submit"]:hover {
+    background-color: #a2daf0;
+    border-color: #a2daf0;
+  }
+ </style>
+ <script>
+   function validateForm() {
+     var imageInput = document.getElementById('id_image');
+     if (imageInput.value.trim() === '') {
+       alert('Veuillez sélectionner une image.');
+       return false;
+     }
+     return true;
+   }
+ </script>
+</head>
+<body>
+ <div class="form">
+    <h1>Créer une poste</h1>
+    <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</body>
+</html>

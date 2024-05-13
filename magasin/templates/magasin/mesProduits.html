@@ -1,0 +1,29 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %}Catalogue de produits{% endblock title %}
+
+{% block content %}
+    <!-- Body -->
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <!-- All products -->
+            <div id='products' class="col-lg-9 mx-auto">
+                <div class="row mx-auto">
+                    {% for product in products %}
+                        <div id="{{ product.id }}" style="width: 18rem;">
+                            {% if product.img %}
+                                <img src="{{ product.img.url }}" alt="{{ product.libelle }}">
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                            <div>
+                                <p>{{ product.libelle }}</p>
+                                <p><b>{{ product.description }}</b></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+
+<div class="col-md-12 text-center">
+  <h2 style="font-family: 'Arial', sans-serif; font-weight: bold;color: rgb(186, 42, 225); font-style: italic;">Manip commande</h2>
+</div>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <form method='POST' class="post-form" style="max-width: 600px; margin: 0 auto;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-3">
+              <button type="submit" class="btn btn-primary" style="font-family: 'Arial', sans-serif; background-color: #b635c2;">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for commande in commandes %}
+    <div class="col mb-4">
+      <div id="{{ commande.id }}" class="card border-primary h-100" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #333; font-size: 18px;">Commande :{{ commande.id }}</h5>
+          <ul class="list-unstyled" style="margin-bottom: 0;">
+            <li><strong style="color: #b635c2;">Date de commande:</strong> {{ commande.dateCde }}</li>
+            <li><strong style="color: #b635c2;">Total Commande:</strong> {{ commande.totalCde }}</li>
+            <li><strong style="color: #b635c2;">Calcul Total:</strong> {{ commande.caltot }}</li>
+            <li><strong style="color: #b635c2;">Produits:</strong>
+              <ul style="margin-top: 0; list-style-type: none; padding-left: 0;">
+                <li>{{ commande.get_produits_list }}</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

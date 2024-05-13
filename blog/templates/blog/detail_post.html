@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du poste</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ddd6f0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #a272b5;
+        }
+        .post-details {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            border: 2px solid #a272b5;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .post-details h1 {
+            font-size: 2.5rem;
+            color: #a272b5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .post-details p {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .post-details img {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .post-details button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #a26ea7;
+            color: #fff;
+            border: 2px solid #8b4292;
+            border-radius: 30px;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .post-details button a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .post-details button:hover {
+            background-color: #a2daf0;
+            border-color: #a2daf0;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-details">
+        <h1>Détails du poste : {{ post.title }}</h1>
+        <p><strong>Slug :</strong> {{ post.slug }}</p>
+        <p><strong>Auteur :</strong> {{ post.author }}</p>
+        <p><strong>Date de mise à jour :</strong> {{ post.updated_on }}</p>
+        <p><strong>Contenu :</strong> {{ post.content }}</p>
+        <p><strong>Date de création :</strong> {{ post.created_on }}</p>
+        <p><strong>Statut :</strong> {{ post.status }}</p>
+        <img src="/media/{{ post.image }}" alt="Image du Poste" />
+        <div class="button-container">
+            <button><a href="{% url 'modifier_post' post.pk %}">Modifier</a></button>
+            <button><a href="{% url 'supprimer_post' post.pk %}">Supprimer</a></button>
+        </div>
+    </div>
+</body>
+</html>

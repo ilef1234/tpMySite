@@ -1,0 +1,32 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <form method='POST' class="post-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-default">Enregistrer</button>
+    </form>
+
+    <div style="overflow: scroll; border: #000000 1px solid;">
+      <table>
+        <tr>
+          {% for product in list %}
+            <td>
+                <img src='/media/{{ product.img }}'
+                   class="rounded float-start"
+                   height="200px"
+                   width="200px"
+                   alt="">
+              <figcaption class="figure-caption">
+                {{ product.libelle }}
+              </figcaption>
+              <p> {{ product.img }} </p>
+              <p> {{ product.prix }} DT. </p>
+            </td>
+          {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+{% endblock %}

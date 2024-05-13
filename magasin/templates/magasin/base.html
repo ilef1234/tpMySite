@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>
+{% block title %} {% endblock %}
+</title>
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/base.css'%}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% block styles %}
+<style>
+  /* Ajout de styles personnalisés */
+  .navbar {
+    background-color: #f8f9fa; /* Couleur de fond */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
+  }
+
+  .navbar-brand {
+    color: #007bff; /* Couleur du texte */
+    font-weight: bold;
+  }
+
+  .navbar-nav .nav-link {
+    color: #6c757d; /* Couleur du texte des liens */
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #0056b3; /* Couleur du texte des liens au survol */
+  }
+
+  .navbar-toggler-icon {
+    background-color: #007bff; /* Couleur de l'icône du bouton de bascule */
+  }
+
+  .navbar-toggler {
+    border-color: #007bff; /* Couleur de la bordure du bouton de bascule */
+  }
+
+  .navbar-collapse {
+    border-top: 1px solid #dee2e6; /* Bordure supérieure de la barre de navigation lorsqu'elle est réduite */
+  }
+
+  .navbar-nav .active .nav-link {
+    color: #007bff; /* Couleur du texte des liens actifs */
+  }
+
+  .logout-button {
+    background-color: transparent; /* Bouton de déconnexion transparent */
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  .logout-button:hover {
+    text-decoration: underline; /* Soulignement du bouton de déconnexion au survol */
+  }
+</style>
+{% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <svg xmlns="http://www.w3.org/2000/svg" style="color: aqua;" height="40" fill="blue" class="bi bi-cart" viewBox="0 0 16 16">
+    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+  </svg>
+  <a class="navbar-brand" href="{% url 'indexprincipal' %}">commerce electronique</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Catalogue</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'fournisseur' %}">Fournisseur</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'nvcommande' %}">Commande</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{ user.username }}</a>
+      </li>
+      <li class="nav-item">
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button class="logout-button" type="submit">Logout</button>
+        </form>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+{% block content %}
+<!-- Your main content goes here -->
+{% endblock %}
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Colored Design - Accueil</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-image: url('media/mag.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      color: #333; /* Couleur principale du texte */
+    }
+
+    #conteneur {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #conteneur #header {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    #conteneur #header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #8c00ff; /* Couleur du titre */
+    }
+
+    #conteneur #menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    #conteneur #menu .app {
+      width: 300px;
+      height: 300px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #conteneur #menu .app h2 {
+      font-size: 2rem;
+      color: #a400b3; /* Couleur du titre de l'application */
+    }
+
+    #conteneur #menu .app p {
+      color: #666; /* Couleur du texte des applications */
+    }
+
+    #footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #6c757d; /* Couleur du texte du pied de page */
+    }
+  </style>
+</head>
+<body>
+  <div id="conteneur">
+    <div id="header">
+      <h1>Bienvenue sur notre site</h1>
+    </div>
+    
+    <div id="menu">
+      <div class="app">
+        <h2 style="color: #8c00ff;">Magasin</h2>
+        <p>Explorez notre sélection de produits</p>
+        <a href="magasin/" class="btn btn-primary">Accéder au Magasin</a>
+      </div>
+      <div class="app">
+        <h2 style="color: #a400b3;">Blog</h2>
+        <p>Consultez nos derniers articles</p>
+        <a href="blog/" class="btn btn-primary">Accéder au Blog</a>
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>&copy; 2024 Colored Design. Tous droits réservés.</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

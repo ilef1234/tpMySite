@@ -1,0 +1,28 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <h2 style="font-family: 'Arial', sans-serif; font-weight: bold;">Manip Produit</h2>
+          </div>
+          <form method='POST' class="post-form">
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.as_p }}
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
