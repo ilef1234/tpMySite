@@ -4,8 +4,11 @@ from django.views.generic.edit import UpdateView
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+
 from blog.forms import PostForm
 from .models import Post
+
 class ListePost(ListView):
     model = Post
     template_name = 'blog/liste_postes.html'

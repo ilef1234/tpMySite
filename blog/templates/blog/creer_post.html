@@ -70,13 +70,19 @@
  </script>
 </head>
 <body>
- <div class="form">
+  <div class="form">
     <h1>Créer une poste</h1>
     <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
       {% csrf_token %}
+      {% if request.user.is_authenticated %}
+        <input type="text" readonly name="author" value="{{ request.user.id }}">
+      {% else %}
+        {{ form.author }}
+      {% endif %}
       {{ form.as_p }}
       <button type="submit">Ajouter</button>
     </form>
-  </div>
+</div>
+
 </body>
 </html>
